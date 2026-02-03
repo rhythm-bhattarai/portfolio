@@ -1,0 +1,17 @@
+/* Hero background */
+.hero-bg {
+    background-image: url("/src/assets/images/background.png");
+    background-size: cover;
+    background-position: center;
+    animation: bgPan 0.9s ease-out forwards;
+}
+
+/* Smooth bottom → top animation */
+@keyframes bgPan {
+    from {
+        transform: translateY(20%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
