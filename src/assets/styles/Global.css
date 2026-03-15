@@ -1,14 +1,39 @@
-.neon-text {
-    color: var(--neon-cyan);
-    text-shadow: var(--glow-cyan);
+/* Additional global utilities specific to sections */
+
+.skills-dot-grid {
+  background-color: var(--cp-dark-brown);
+  background-image: radial-gradient(circle, #a0896050 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-.neon-border {
-    border: 1px solid rgba(0, 240, 255, 0.4);
-    box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+.terminal-border {
+  border: 1px solid rgba(0, 240, 255, 0.5);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
 }
 
-.neon-pink {
-    color: var(--neon-pink);
-    text-shadow: var(--glow-pink);
+.corner-brackets {
+  position: relative;
 }
+
+.corner-brackets::before,
+.corner-brackets::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--neon-cyan);
+  border-style: solid;
+}
+
+.corner-brackets::before {
+  top: -2px;
+  left: -2px;
+  border-width: 1px 0 0 1px;
+}
+
+.corner-brackets::after {
+  bottom: -2px;
+  right: -2px;
+  border-width: 0 1px 1px 0;
+}
+

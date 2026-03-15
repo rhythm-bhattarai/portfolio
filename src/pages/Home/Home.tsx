@@ -9,40 +9,23 @@ export function Home() {
   return (
     <>
       <Heading />
-      <section
-        id="home"
-        className="min-h-screen bg-black text-white px-8 md:px-16 scroll-mt-24"
-      >
-        <HeroSection />
-      </section>
+      <HeroSection />
 
-      <section
-        id="skills"
-        className="min-h-screen bg-black text-white px-8 md:px-16 scroll-mt-24"
-      >
+      <div id="skills" className="scroll-mt-24">
         <Skills />
-      </section>
+      </div>
 
-      <section
-        id="projects"
-        className="min-h-screen bg-black text-white px-8 md:px-16 scroll-mt-24"
-      >
-        <Projects />
-      </section>
-
-      <section
-        id="experience"
-        className="min-h-screen bg-black text-white px-8 md:px-16 scroll-mt-24"
-      >
+      <div id="experience" className="scroll-mt-24">
         <Experience />
-      </section>
+      </div>
 
-      <section
-        id="contact"
-        className="min-h-screen bg-black text-white px-8 md:px-16 scroll-mt-24"
-      >
+      <div id="projects" className="scroll-mt-24">
+        <Projects />
+      </div>
+
+      <div id="contact" className="scroll-mt-24">
         <Contact />
-      </section>
+      </div>
     </>
   );
 }

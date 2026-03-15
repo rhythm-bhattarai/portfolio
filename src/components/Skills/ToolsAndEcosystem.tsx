@@ -26,7 +26,13 @@ export function ToolsAndEcosystem() {
   return (
     <section className="mt-24 -mx-4 sm:-mx-6 lg:-mx-8 overflow-hidden">
       <div className="px-4 sm:px-6 lg:px-8 mb-10">
-        <h3 className="text-3xl font-semibold">Tools & Ecosystem</h3>
+        <h3
+          className="glitch-text text-2xl font-semibold md:text-4xl"
+          data-text="RUNTIME TOOLCHAIN"
+          style={{ fontFamily: "var(--font-title)" }}
+        >
+          RUNTIME TOOLCHAIN
+        </h3>
       </div>
 
       <div className="relative py-8">
