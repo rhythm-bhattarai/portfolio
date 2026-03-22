@@ -4,7 +4,7 @@ import { SkillBar } from "./SkillBar";
 interface SkillGroupData {
   id: string;
   label: string;
-  skills: {
+  skills: readonly {
     name: string;
     tier: 1 | 2 | 3 | 4 | 5;
     label: "CORE" | "PROFICIENT" | "FAMILIAR" | "LEARNING" | "AWARE";
