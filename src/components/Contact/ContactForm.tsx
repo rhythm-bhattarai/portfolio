@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
 
 export function ContactForm() {
     const [name, setName] = useState("");
@@ -8,12 +7,8 @@ export function ContactForm() {
     const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
     const [error, setError] = useState<string | null>(null);
 
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
     function validate() {
-        if (!name.trim()) return "Please enter your name or email.";
+        if (!name.trim()) return "Please enter your email.";
         if (!subject.trim()) return "Please enter a subject.";
         if (!message.trim()) return "Please enter a message.";
         return null;
@@ -32,21 +27,28 @@ export function ContactForm() {
         setStatus("sending");
 
         try {
-            await emailjs.send(
-                serviceId,
-                templateId,
-                {
-                    from_name: name,
+            const response = await fetch("https://formspree.io/f/mreywbrn", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    _replyto: name,
                     subject: subject,
                     message: message,
-                },
-                publicKey
-            );
+                }),
+            });
 
-            setStatus("sent");
-            setName("");
-            setSubject("");
-            setMessage("");
+            if (response.ok) {
+                setStatus("sent");
+                setName("");
+                setSubject("");
+                setMessage("");
+            } else {
+                const data = await response.json();
+                throw new Error(data?.error || "Server responded with an error.");
+            }
         } catch (err) {
             console.error(err);
             setStatus("error");
@@ -74,7 +76,7 @@ export function ContactForm() {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Your Name or Email"
+                    placeholder="Your Email"
                     className="w-full border-b border-[var(--cp-green)] bg-transparent p-3 text-sm text-[var(--cp-white)] outline-none placeholder:text-neutral-500"
                     required
                 />
